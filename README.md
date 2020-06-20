@@ -36,6 +36,7 @@ Custom Management Command have been used to populate the database
 
 This command can be run by **python manage.py populate 10** .
 Its code is present under task app as follows task/management/commands/populate.py
+
 Rest-API end-point
 
 Get request for the list of members and their respective activity periods.
