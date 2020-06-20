@@ -9,7 +9,6 @@ Tech/framework used
     Django==3.0.7
     django-rest-framework==0.1.0
     djangorestframework==3.11.0
-    pkg-resources==0.0.0
     pytz==2020.1
     sqlparse==0.3.1
 
@@ -152,7 +151,7 @@ Hosting locally:
 
 Step-1: Clone the repo to your system.
 
-Step-2: run # virtualenv -p python3 env
+Step-2: run virtualenv -p python3 env
 
 Step-3: run pip install -r requirements.txt 
 
