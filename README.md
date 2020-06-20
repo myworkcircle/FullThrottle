@@ -183,6 +183,31 @@ class FetchDetails(ListAPIView):
         queryset = self.get_queryset()
         serializer = UserSerializer(queryset, many=True)
         return Response({'ok':True,'members':serializer.data})
+        
+ Alternatively we can use function based view as well as viewsets to serve the same purpose:-
+ 
+ using function based view:-
+ 
+ @api_view(['GET'])
+ 
+    def fetch_details(request):
+        user = User.objects.all()
+        user_list = []
+        for i in range(len(user)):
+            serializer = UserSerializer(user[i])
+            user_list.append(serializer.data)
+        return Response({'ok':True,'members':user_list})
+        
+ Using viewsets:-
+ 
+ class FetchDetails(ModelViewSet):
+ 
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
+    def list(self,request):
+        queryset = User.objects.all()
+        serializer = UserSerializer(queryset,many=True)
+        return Response({'ok':True,'members':serializer.data})
 
 Custom Management Command to populate the database
 
@@ -199,3 +224,5 @@ For random string generation, I have used **''.join(random.choices(string.ascii_
 TimeZone(tz) by a tuple of already provided timezones by pytz
 
 Code is present under activityRecord APP as follows task/management/commands/populate.py
+
+Ps :- I haven't made two seperated apps for user and activity cause it was mentioned to make one app, though i know it is better practise to have two seperate apps for user and other things
