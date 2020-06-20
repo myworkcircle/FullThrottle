@@ -1,8 +1,5 @@
 from django.core.management.base import BaseCommand, CommandError
 from task.models import User,ActivityPeriods
-from django.utils import timezone
-from random import randint
-from django.utils.crypto import get_random_string
 import datetime as dt
 import time
 import pytz
