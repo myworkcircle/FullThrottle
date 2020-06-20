@@ -3,20 +3,17 @@
 
 This is a Production ready Django Web Application having Django-Rest API that serves a list of members(users) and their respective active periods. Active period basically includes the time at which member logs into the system(start_time) and logs out of the system(end_time). Custom management command to populate the database is also included.
 Tech/framework used
-
-    Python 3.8
-    Django 3.0.6
-    Postgres
-    Django Rest Framework 3.11
-    Markdown 3.2.2
-    Django-Filter 2.2.0
-    Psycopg2 2.8.5
-    Python-decopule 3.2
-    Pytz 2020.1
-    sqlparse 0.3.1
+    Python==3.6.9
+    asgiref==3.2.10
+    Django==3.0.7
+    django-rest-framework==0.1.0
+    djangorestframework==3.11.0
+    pkg-resources==0.0.0
+    pytz==2020.1
+    sqlparse==0.3.1
 
 
-## Currently Hosted at PythonAnywhere server: https://kanishkftltask.pythonanywhere.com/activity_record/members/ .
+## Currently Hosted at PythonAnywhere server: http://pallavagarwal.pythonanywhere.com/fetch/ .
 
 
 
@@ -35,15 +32,15 @@ activityRecord is reponsible for serving the get request at the following mentio
 account
 
 For User models and its related operations.
-Custom Management Command to populate the database
+Custom Management Command to populate the database have been used
 
-This command can be run by python manage.py populate_UserRecord .
-Its code is present under activityRecord APP as follows activityRecord/management/commands/populate_UserRecord.py
+This command can be run by # python manage.py populate 10 .
+Its code is present under task app as follows task/management/commands/populate.py
 Rest-API end-point
 
 Get request for the list of members and their respective activity periods.
 
-    /activity_record/members/
+    /fetch/
 
 Response:
 
@@ -55,6 +52,7 @@ Response:
 
 {
     "ok": true,
+    
     "members": [
         {
             "id": "a23a4474-32f5-42fe-8f82-ab495500ecf9",
@@ -90,37 +88,56 @@ Response:
             ]
         },
         {
-            "id": "1605c6da-e3cf-44c9-967d-f371fdf85372",
-            "real_name": "MSLYNMIPVG",
-            "tz": "Europe/Helsinki",
+            "id": "efd0f3d5-d114-4148-873b-06eeba214312",
+            "real_name": "ZWFBHSNFFI",
+            "tz": "America/Belize",
             "activity": [
                 {
-                    "start_time": "June 20 2020 14:29",
-                    "end_time": "July 20 2020 14:29"
+                    "start_time": "June 20 2020 14:50",
+                    "end_time": "July 20 2020 14:50"
+                },
+                {
+                    "start_time": "June 20 2020 14:50",
+                    "end_time": "July 20 2020 14:50"
+                },
+                {
+                    "start_time": "June 20 2020 14:50",
+                    "end_time": "July 20 2020 14:50"
                 }
             ]
         },
         {
-            "id": "d8a7facd-8040-47a5-8d00-3642b35b5e7a",
-            "real_name": "OZWRPOLVDK",
-            "tz": "America/Argentina/La_Rioja",
+            "id": "db0e9ba1-a274-432a-b367-920c77c10e04",
+            "real_name": "ZGSLYXBDJA",
+            "tz": "Asia/Singapore",
             "activity": [
                 {
-                    "start_time": "June 20 2020 14:29",
-                    "end_time": "July 20 2020 14:29"
+                    "start_time": "June 20 2020 14:50",
+                    "end_time": "July 20 2020 14:50"
+                },
+                {
+                    "start_time": "June 20 2020 14:50",
+                    "end_time": "July 20 2020 14:50"
+                },
+                {
+                    "start_time": "June 20 2020 14:50",
+                    "end_time": "July 20 2020 14:50"
                 }
             ]
         },
 
+
+I have paste the snippet for differently populated activityperiod value as 1st one has only 1 record while second one has 3 acitvity records
+
 Database Models used
 User:
 
-User models is an extention of AbstractUser model.
+User model is an extention of AbstractUser model.
 Having additional Fields as follow
 
-    id (primary key, Char-field, fixed length 9)
+    id (primary key, uuid-field, unique=true)
     real_name (Char-field, max length 100)
-    tz for timezone (Char-field, max length 100, default Asia/kolkata)
+    tz for timezone (Char-field, max length 100,)
 
 ActivityPeriod:
 
@@ -134,35 +151,31 @@ Hosting locally:
 
 Step-1: Clone the repo to your system.
 
-Step-2: Download and install a PostgreSQL server, for ubuntu/debian users https://www.youtube.com/watch?v=M4RDizdaO9U
+Step-2: run # virtualenv -p python3 env
 
-Step-3: Create new user and database in Postgres.
+Step-3: run pip install -r requirements.txt 
 
-Step-4: Find evn_example.txt in the repo you just cloned, copy all text present in it to a new file, change all the fields in the text according to your Postgres setup and save this file as .env.
 Make sure DEBUG is True for running locally.
-
-Step-5: Find local_settings.example rename it as local_settings.py
-
-Step-6: Run command: pip install -r requirements.txt
 
 Step-7 Run command: python manage.py makemigrations
 
 Step-8 Run command: python manage.py migrate
 
-Step-9 Run command: python manage.py populate_UserRecord
+Step-9 Run command: python manage.py populate 10
 
 Step-10 Run command: python manage.py runserver
 Using Cloud services like AWS or PythonAnywhere
 
     Make sure DEBUG is False
     ALLOWED_HOST is configured according to usecase
-    command: python manage.py collectstatic for collecting all the static files in the folder mentioned in STATIC_ROOT, you can change it if want to server static from other location
+    command: python manage.py collectstatic for collecting all the static files in the folder mentioned in STATIC_ROOT
 
 API View
 
 Class based API for serving get request. Here get function first makes a query to database for all the User model and than pass the List of all Users to the the UserSerializer
 
 class FetchDetails(ListAPIView):
+
     queryset = User.objects.all()
     serializer_class = UserSerializer
     def list(self,request,format=None):
@@ -173,9 +186,15 @@ class FetchDetails(ListAPIView):
 Custom Management Command to populate the database
 
 This command fills the database with the dummy data.
+
 command: python manage.py populate x
+
 where x will be how many dummy objects we want to create . (ex:- python3 manage.py populate 10)
+
 Command will be creating  User objects and each user will have 3 activity periods.
+
 For random string generation, I have used ''.join(random.choices(string.ascii_uppercase, k=10))
+
 TimeZone(tz) by a tuple of already provided timezones by pytz
+
 Code is present under activityRecord APP as follows activityRecord/management/commands/populate_UserRecord.py
