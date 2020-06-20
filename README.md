@@ -221,8 +221,7 @@ Command will be creating  User objects and each user will have 3 activity period
 
 For random string generation, I have used **''.join(random.choices(string.ascii_uppercase, k=10))
 
+Custome command file **populate.py** resides at task/management/commands/populate.py
 TimeZone(tz) by a tuple of already provided timezones by pytz
-
-Code is present under activityRecord APP as follows task/management/commands/populate.py
 
 Ps :- I haven't made two seperated apps for user and activity cause it was mentioned to make one app, though i know it is better practise to have two seperate apps for user and other things
