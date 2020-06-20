@@ -32,9 +32,9 @@ activityRecord is reponsible for serving the get request at the following mentio
 account
 
 For User models and its related operations.
-Custom Management Command to populate the database have been used
+Custom Management Command have been used to populate the database
 
-This command can be run by # python manage.py populate 10 .
+This command can be run by **python manage.py populate 10** .
 Its code is present under task app as follows task/management/commands/populate.py
 Rest-API end-point
 
@@ -143,7 +143,7 @@ ActivityPeriod:
 
 ActivityPeriod is a simple Django model having:
 
-    user (Foreign Key User model)
+    member (Foreign Key User model)
     start_time (DateTimeField)
     end_time (DateTimeField)
 
@@ -187,14 +187,14 @@ Custom Management Command to populate the database
 
 This command fills the database with the dummy data.
 
-command: python manage.py populate x
+command: **python manage.py populate x**
 
 where x will be how many dummy objects we want to create . (ex:- python3 manage.py populate 10)
 
 Command will be creating  User objects and each user will have 3 activity periods.
 
-For random string generation, I have used ''.join(random.choices(string.ascii_uppercase, k=10))
+For random string generation, I have used **''.join(random.choices(string.ascii_uppercase, k=10))
 
 TimeZone(tz) by a tuple of already provided timezones by pytz
 
-Code is present under activityRecord APP as follows activityRecord/management/commands/populate_UserRecord.py
+Code is present under activityRecord APP as follows task/management/commands/populate.py
