@@ -46,7 +46,7 @@ Response:
 
     ok is a json boolean field.
     members is a json array of Users
-    Each User object has following fields id, real_name, tz(timezone) and activity_periods.
+    Each User object has following fields id, real_name, tz(timezone) and activity.
     activity_periods is again a json array of active time period.
     Each active time period has start_time and end_time fields.
 
