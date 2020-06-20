@@ -13,7 +13,7 @@ Tech/framework used
     sqlparse==0.3.1
 
 
-## Currently Hosted at PythonAnywhere server: http://pallavagarwal.pythonanywhere.com/fetch/ .
+## Currently Hosted at PythonAnywhere server: http://pallavagarwal.pythonanywhere.com/fetch/
 
 
 
