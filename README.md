@@ -17,7 +17,7 @@ Tech/framework used
 
 
 
-High level overview:
+In depth overview:
 
 This Django project consists of one App:
 
@@ -28,10 +28,9 @@ This Django project consists of one App:
 1. User
 2. ActivityPeriods
 
-activityRecord is reponsible for serving the get request at the following mentioned API end-point by making queries to the database and performing serialization. This APP also stores the data related to the users active period like start time and end time.
-account
+app is reponsible for serving the get request at the following mentioned API end-point by making queries to the database and performing serialization. 
+This APP also stores the data related to the users active period like start time and end time and user details
 
-For User models and its related operations.
 Custom Management Command have been used to populate the database
 
 This command can be run by **python manage.py populate 10** .
@@ -128,7 +127,7 @@ Response:
         },
 
 
-I have paste the snippet for differently populated activityperiod value as 1st one has only 1 record while second one has 3 acitvity records
+I have paste the snippet for differently populated activityperiods value as 1st one has only 1 record while second one has 3 acitvity records
 
 Database Models used
 User:
@@ -165,7 +164,8 @@ Step-8 Run command: python manage.py migrate
 Step-9 Run command: python manage.py populate 10
 
 Step-10 Run command: python manage.py runserver
-Using Cloud services like AWS or PythonAnywhere
+
+Steps for Cloud services in this case hosted on PythonAnywhere
 
     Make sure DEBUG is False
     ALLOWED_HOST is configured according to usecase
