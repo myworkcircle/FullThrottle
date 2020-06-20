@@ -162,22 +162,20 @@ API View
 
 Class based API for serving get request. Here get function first makes a query to database for all the User model and than pass the List of all Users to the the UserSerializer
 
-class UsersList(APIView):
-
-    def get(self, request, format=None):
-        users = User.objects.all()
-        serializer = UserSerializer(users, many=True)
-        return Response({
-            'ok': True,
-            'members': serializer.data
-            })
+class FetchDetails(ListAPIView):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
+    def list(self,request,format=None):
+        queryset = self.get_queryset()
+        serializer = UserSerializer(queryset, many=True)
+        return Response({'ok':True,'members':serializer.data})
 
 Custom Management Command to populate the database
 
 This command fills the database with the dummy data.
-command: python manage.py populate_UserRecord
-Command will be creating 5 User objects and each user will have 5 activity periods.
-For random string generation, I have used random.choice(string.ascii_lowercase)
-For integers random.randint()
-TimeZone(tz) by a List having number of TimeZone which are Hard coded
+command: python manage.py populate x
+where x will be how many dummy objects we want to create . (ex:- python3 manage.py populate 10)
+Command will be creating  User objects and each user will have 3 activity periods.
+For random string generation, I have used ''.join(random.choices(string.ascii_uppercase, k=10))
+TimeZone(tz) by a tuple of already provided timezones by pytz
 Code is present under activityRecord APP as follows activityRecord/management/commands/populate_UserRecord.py
