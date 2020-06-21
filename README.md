@@ -171,7 +171,7 @@ Steps for Cloud services in this case hosted on PythonAnywhere
     ALLOWED_HOST is configured according to usecase
     command: python manage.py collectstatic for collecting all the static files in the folder mentioned in STATIC_ROOT
 
-API View
+# API View
 
 Class based API for serving get request. Here get function first makes a query to database for all the User model and than pass the List of all Users to the the UserSerializer
 
@@ -209,7 +209,7 @@ class FetchDetails(ListAPIView):
         serializer = UserSerializer(queryset,many=True)
         return Response({'ok':True,'members':serializer.data})
 
-Custom Management Command to populate the database
+# Custom Management Command to populate the database
 
 This command fills the database with the dummy data.
 
