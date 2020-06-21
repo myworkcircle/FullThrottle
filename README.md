@@ -132,8 +132,7 @@ I have paste the snippet for differently populated activityperiods value as 1st 
 Database Models used
 User:
 
-User model is an extention of AbstractUser model.
-Having additional Fields as follow
+Having Fields as follow
 
     id (primary key, uuid-field, unique=true)
     real_name (Char-field, max length 100)
@@ -143,7 +142,7 @@ ActivityPeriod:
 
 ActivityPeriod is a simple Django model having:
 
-    member (Foreign Key User model)
+    member (Foreign Key to User model)
     start_time (DateTimeField)
     end_time (DateTimeField)
 
