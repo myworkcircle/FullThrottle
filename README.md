@@ -24,7 +24,7 @@ This Django project consists of one App:
 
     task
 
-## It includes two models
+## Models Used
 
 1. User
 2. ActivityPeriods
@@ -43,7 +43,7 @@ Get request for the list of members and their respective activity periods.
 
     /fetch/
 
-Response:
+**Response:
 
     ok is a json boolean field.
     members is a json array of Users
@@ -152,9 +152,9 @@ Hosting locally:
 
 Step-1: Clone the repo to your system.
 
-Step-2: run virtualenv -p python3 env
+Step-2: run $ virtualenv -p python env (or virtualenv -p python3 env , depending on system settings for python)
 
-Step-3: run pip install -r requirements.txt 
+Step-3: run $ pip install -r requirements.txt 
 
 Make sure DEBUG is True for running locally.
 
