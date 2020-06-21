@@ -130,7 +130,8 @@ Response:
 
 I have paste the snippet for differently populated activityperiods value as 1st one has only 1 record while second one has 3 acitvity records
 
-Database Models used
+## Database Models used
+
 User:
 
 Having Fields as follow
