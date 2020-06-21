@@ -222,7 +222,7 @@ Command will be creating  User objects and each user will have 3 activity period
 
 Custome command file **populate.py** resides at **task/management/commands/populate.py
 
-For random string generation, I have used **''.join(random.choices(string.ascii_uppercase, k=10))
+For random string generation, I have used  ''.join(random.choices(string.ascii_uppercase, k=10))
 
 TimeZone(tz) by a tuple of already provided timezones by pytz
 
