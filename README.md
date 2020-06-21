@@ -132,7 +132,7 @@ I have paste the snippet for differently populated activityperiods value as 1st 
 
 ## Database Models used
 
-User:
+**User:
 
 Having Fields as follow
 
@@ -140,7 +140,7 @@ Having Fields as follow
     real_name (Char-field, max length 100)
     tz for timezone (Char-field, max length 100,)
 
-ActivityPeriod:
+**ActivityPeriod:
 
 ActivityPeriod is a simple Django model having:
 
